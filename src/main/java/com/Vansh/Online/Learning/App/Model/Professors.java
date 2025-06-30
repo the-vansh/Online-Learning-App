@@ -12,15 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Professors {
     @Id
-    private int professorid;
-    private String professoremail;
-    private String professorname;
-    private String degreecompleted;
-    private String institutionname;
-    private String professordepartment;
+    private String professorUsername; // this is basically the email of the professor
+    private String professorName;
+    private String degreeCompleted;
+    private String institutionName;
+    private String professorDepartment;
     private String experience;
-    private String professorphone;
-    private String professorgender;
-    private String professorpassword;
+    private String professorPhone;
+    private String professorGender;
+    private String professorPassword;
     private String status;
 }

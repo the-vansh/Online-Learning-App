@@ -21,7 +21,7 @@ public class RegisterController {
     public ResponseEntity<?> registerUser(@RequestBody Learner learner) {
         try {
             Learner learner1 = registerService.SaveNewLearner(learner);
-            return ResponseEntity.ok("Learner registered successfully!" + " ID: " + learner1.getLearnerId());
+            return ResponseEntity.ok("Learner registered successfully!" + " Email-ID: " + learner1.getLearnerUsername());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error registering learner: " + e.getMessage());
         }
@@ -31,7 +31,7 @@ public class RegisterController {
     public ResponseEntity<?> registerProfessor(@RequestBody Professors professor) {
         try {
             Professors professor1 = registerService.SaveNewProfessor(professor);
-            return ResponseEntity.ok("Professor registered successfully!" + " ID: " + professor1.getProfessorid());
+            return ResponseEntity.ok("Professor registered successfully!" + "Email-ID: " + professor1.getProfessorUsername());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error registering professor: " + e.getMessage());
         }

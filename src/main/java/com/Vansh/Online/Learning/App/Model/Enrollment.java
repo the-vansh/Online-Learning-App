@@ -12,14 +12,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Chapters {
+public class Enrollment {
     @Id
-    private int chapterId;
-    private int chapterNumber;
-    private String chapterName;
-    private String chapterUrl;
-    private String chapterCreatedDate;
+    private int enrollmentId;
     @ManyToOne
     @JoinColumn(name = "course_id", referencedColumnName = "courseId")
     private Courses course;
+
+    @ManyToOne
+    @JoinColumn(name = "learner_username", referencedColumnName = "learnerUsername")
+    private Learner learner;
+
+    private String enrollmentDate;
+    private String status;
 }

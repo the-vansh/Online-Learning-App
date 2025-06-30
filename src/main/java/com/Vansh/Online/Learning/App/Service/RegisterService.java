@@ -25,7 +25,7 @@ public class RegisterService {
     }
 
     public Professors SaveNewProfessor(Professors professor) {
-        professor.setProfessorpassword(new BCryptPasswordEncoder(12).encode(professor.getProfessorpassword()));
+        professor.setProfessorPassword(new BCryptPasswordEncoder(12).encode(professor.getProfessorPassword()));
         return professorRepository.save(professor);
     }
 }

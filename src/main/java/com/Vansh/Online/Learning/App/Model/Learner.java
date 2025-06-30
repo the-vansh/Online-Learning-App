@@ -12,9 +12,8 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Learner {
     @Id
-    private int learnerId;
+    private String learnerUsername; // this is basically the email of the learner
     private String learnerName;
-    private String learnerEmail;
     private String learnerPassword;
     private String learnerPhoneNumber;
 }
