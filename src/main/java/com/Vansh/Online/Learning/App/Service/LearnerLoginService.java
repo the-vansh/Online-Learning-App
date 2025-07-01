@@ -23,7 +23,7 @@ public class LearnerLoginService {
     @Autowired
     private JWTService jwtService;
 
-    public ResponseEntity<?> verfiyLearner(LoginRequest loginrequest) {
+    public ResponseEntity<?> verifyLearner(LoginRequest loginrequest) {
         Learner learner = learnerRepository.findById(loginrequest.getUsername()).orElse(null);
         if (learner == null || !passwordEncoder.matches(loginrequest.getPassword(), learner.getLearnerPassword())) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");

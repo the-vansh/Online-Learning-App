@@ -11,5 +11,6 @@ public class ProfessorController {
     @GetMapping("/welcome")
     public String welcome() {
         return "Welcome to the Professor Dashboard!";
+
     }
 }
