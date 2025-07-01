@@ -1,12 +1,13 @@
 package com.Vansh.Online.Learning.App.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,4 +30,8 @@ public class Courses {
     @ManyToOne
     @JoinColumn(name = "Professor_username", referencedColumnName = "professorUsername")
     private Professors professor;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Chapters> chapters = new ArrayList<>();
 }

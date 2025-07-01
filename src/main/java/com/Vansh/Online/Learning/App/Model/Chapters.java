@@ -1,5 +1,6 @@
 package com.Vansh.Online.Learning.App.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -21,5 +22,6 @@ public class Chapters {
     private String chapterCreatedDate;
     @ManyToOne
     @JoinColumn(name = "course_id", referencedColumnName = "courseId")
+    @JsonBackReference
     private Courses course;
 }

@@ -4,10 +4,8 @@ import com.Vansh.Online.Learning.App.Model.Courses;
 import com.Vansh.Online.Learning.App.Model.Enrollment;
 import com.Vansh.Online.Learning.App.Model.Learner;
 import com.Vansh.Online.Learning.App.Model.Professors;
-import com.Vansh.Online.Learning.App.Repository.CourseRepository;
-import com.Vansh.Online.Learning.App.Repository.EnrollmentRepository;
-import com.Vansh.Online.Learning.App.Repository.LearnerRepository;
-import com.Vansh.Online.Learning.App.Repository.ProfessorRepository;
+import com.Vansh.Online.Learning.App.Repository.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +28,9 @@ public class AdminService {
 
     @Autowired
     EnrollmentRepository enrollmentRepository;
+
+    @Autowired
+    ChapterRepository chapterRepository;
 
     public ResponseEntity<?> findProfessorsbyStatus(String status) {
         try {
@@ -131,11 +132,13 @@ public class AdminService {
     }
 
     public ResponseEntity<?> deleteCourseByCourseId(int courseid) {
-        try {
-            courseRepository.deleteById(courseid);
-            return ResponseEntity.ok("Course deleted Successfully");
-        }catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while Deleting the Course");
-        }
+
+            try {
+                courseRepository.deleteById(courseid);
+                return ResponseEntity.ok("Course deleted Successfully");
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while Deleting the Course");
+            }
+
     }
 }
