@@ -123,8 +123,10 @@ public class AdminService {
     }
 
     public ResponseEntity<?> deleteProfessorByUsername(String professorusername) {
-        try {
+       try {
+            System.out.println("Hello");
             professorRepository.deleteById(professorusername);
+            System.out.println("Hello");
             return ResponseEntity.ok("Professor deleted Successfully");
         }catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while Deleting the Professor");
