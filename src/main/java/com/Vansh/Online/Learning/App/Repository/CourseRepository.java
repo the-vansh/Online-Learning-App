@@ -15,4 +15,5 @@ public interface CourseRepository extends JpaRepository<Courses,Integer> {
             "LOWER(c.courseType) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(c.courseLanguages) LIKE LOWER(CONCAT('%', :keyword, '%'))")
     List<Courses> findByKeyword(String keyword);
+    List<Courses> findByProfessor_ProfessorUsername(String professorUsername);
 }

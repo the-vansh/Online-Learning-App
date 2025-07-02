@@ -1,6 +1,8 @@
 package com.Vansh.Online.Learning.App.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -22,7 +24,7 @@ public class Enrollment {
 
     @ManyToOne
     @JoinColumn(name = "learner_username", referencedColumnName = "learnerUsername")
-    @JsonBackReference
+    @JsonIgnoreProperties("enrollments")
     private Learner learner;
 
     private String enrollmentDate;
