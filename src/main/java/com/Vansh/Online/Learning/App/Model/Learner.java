@@ -1,5 +1,6 @@
 package com.Vansh.Online.Learning.App.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -24,7 +25,6 @@ public class Learner {
     private String learnerPhoneNumber;
 
     @OneToMany(mappedBy = "learner", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
     private List<Enrollment> enrollments = new ArrayList<>();
 
     // THIS IS NOT NECESSARY THIS CAN BE ACCORDING THE NEED OF THE DATA AT THE FRONT END
