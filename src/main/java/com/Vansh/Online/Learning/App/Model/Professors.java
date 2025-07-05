@@ -27,6 +27,7 @@ public class Professors {
     private String professorPhone;
     private String professorGender;
     private String professorPassword;
+    private String professorImageUrl;
     private String status;
 
 

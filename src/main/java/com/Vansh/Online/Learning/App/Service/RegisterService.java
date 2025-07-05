@@ -6,6 +6,8 @@ import com.Vansh.Online.Learning.App.Model.Professors;
 import com.Vansh.Online.Learning.App.Repository.LearnerRepository;
 import com.Vansh.Online.Learning.App.Repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,14 +21,22 @@ public class RegisterService {
     @Autowired
     private ProfessorRepository professorRepository;
 
-    public Learner SaveNewLearner(Learner learner) {
+    public ResponseEntity<?> SaveNewLearner(Learner learner) {
+        if (learnerRepository.existsByLearnerUsername(learner.getLearnerUsername())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Learner with this username already exists!");
+        }
         learner.setLearnerPassword(new BCryptPasswordEncoder(12).encode(learner.getLearnerPassword()));
-        return learnerRepository.save(learner);
+        learnerRepository.save(learner);
+        return ResponseEntity.ok("Learner registered successfully! Email-ID: " + learner.getLearnerUsername());
     }
 
-    public Professors SaveNewProfessor(Professors professor) {
+    public ResponseEntity<?> SaveNewProfessor(Professors professor) {
+        if (professorRepository.existsByProfessorUsername(professor.getProfessorUsername())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Professor with this username already exists!");
+        }
         professor.setProfessorPassword(new BCryptPasswordEncoder(12).encode(professor.getProfessorPassword()));
-        return professorRepository.save(professor);
+        professorRepository.save(professor);
+        return ResponseEntity.ok("Professor registered successfully! Email-ID: " + professor.getProfessorUsername());
     }
 }
 

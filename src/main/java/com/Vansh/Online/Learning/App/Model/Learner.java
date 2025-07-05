@@ -23,7 +23,8 @@ public class Learner {
     private String learnerName;
     private String learnerPassword;
     private String learnerPhoneNumber;
-
+    private String learnerGender;
+    private String learnerImageUrl;
     @OneToMany(mappedBy = "learner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enrollment> enrollments = new ArrayList<>();
 

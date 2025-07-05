@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface ProfessorRepository extends JpaRepository<Professors,String> {
+    boolean existsByProfessorUsername(String professorUsername);
     List<Professors> findByStatus(String status);
 }
