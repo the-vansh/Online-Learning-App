@@ -1,5 +1,6 @@
 package com.Vansh.Online.Learning.App.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -29,10 +30,11 @@ public class Professors {
     private String professorPassword;
     private String professorImageUrl;
     private String status;
+    private String professorPublicId;
 
 
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonIgnoreProperties("professor")
     private List<Courses> courses = new ArrayList<>();
 
     // THESE LINE CAN BE DELETED JUST HERE BECOUSE TILL NOW I DONT THE FRONTENT REQUIRMENT CAN CHANGE

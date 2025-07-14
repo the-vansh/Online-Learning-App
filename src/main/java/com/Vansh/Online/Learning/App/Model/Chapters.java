@@ -20,6 +20,7 @@ public class Chapters {
     private String chapterName;
     private String chapterUrl;
     private String chapterCreatedDate;
+    private String chapterPublicId;
     @ManyToOne
     @JoinColumn(name = "course_id", referencedColumnName = "courseId")
     @JsonBackReference

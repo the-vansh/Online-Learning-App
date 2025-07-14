@@ -55,8 +55,13 @@ public class ProfessorController {
         return professorService.serviceDeleteCourseById(courseid);
     }
 
-    @GetMapping("/getenrollmentinfo/{courseid}")
-    public ResponseEntity<?>getEnrollmentInfo(@PathVariable int  courseid){
-        return professorService.serviceGetEnrollmentInfo(courseid);
+    @GetMapping("/getenrollmentinfo/{ProfessorUserName}")
+    public ResponseEntity<?>getEnrollmentInfo(@PathVariable String  ProfessorUserName){
+        return professorService.serviceGetEnrollmentInfo(ProfessorUserName);
+    }
+
+    @GetMapping("/getstats/{ProfessorUserName}")
+    public ResponseEntity<?>getAllStats(@PathVariable String ProfessorUserName){
+        return professorService.getAllStatsInfo(ProfessorUserName);
     }
 }

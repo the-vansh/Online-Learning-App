@@ -25,6 +25,7 @@ public class Learner {
     private String learnerPhoneNumber;
     private String learnerGender;
     private String learnerImageUrl;
+    private String learnerPublicId;
     @OneToMany(mappedBy = "learner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enrollment> enrollments = new ArrayList<>();
 

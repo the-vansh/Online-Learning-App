@@ -33,6 +33,6 @@ public class ProfessorLoginService {
 
          String token = jwtService.generateToken(professor.getProfessorUsername(), "PROFESSOR");
 
-         return ResponseEntity.ok().body(Map.of("token", token, "role", "PROFESSOR"));
+         return ResponseEntity.ok().body(Map.of("token", token, "role", "PROFESSOR","Username",loginrequest.getUsername()));
      }
 }

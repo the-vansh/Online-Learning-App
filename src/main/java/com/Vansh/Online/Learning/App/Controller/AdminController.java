@@ -16,7 +16,7 @@ public class AdminController {
 
     @GetMapping("/getactiveprofessors")
     public ResponseEntity<?> getActiveProfessors (){
-       return adminService.findProfessorsbyStatus("Approved");
+        return adminService.findProfessorsbyStatus("Approved");
     }
 
     @GetMapping("/getinactiveprofessors")
@@ -26,7 +26,6 @@ public class AdminController {
 
     @PutMapping("/verifyprofessor/{professorUsername}")
     public ResponseEntity<?>verifyInactiveProfessor(@PathVariable String professorUsername){
-        System.out.println("verify method");
         return adminService.verifyProfessor(professorUsername);
     }
 
@@ -63,6 +62,11 @@ public class AdminController {
     @DeleteMapping("/deletecourse/{courseid}")
     public ResponseEntity<?>deleteCourse(@PathVariable int courseid){
         return adminService.deleteCourseByCourseId(courseid);
+    }
+
+    @GetMapping("/getdashboarddetails")
+    public ResponseEntity<?> getDashboarddetails(){
+        return adminService.getAllDashboardDetails();
     }
 
 }

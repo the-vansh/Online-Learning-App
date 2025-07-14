@@ -1,6 +1,7 @@
 package com.Vansh.Online.Learning.App.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,13 +26,12 @@ public class Courses {
     private String courseCreatedDate;
     private String courseType;
     private String courseLanguages;
-    private int price;
+    private String coursePublicId;
     private int enrollmentCount;
-
 
     @ManyToOne
     @JoinColumn(name = "Professor_username", referencedColumnName = "professorUsername")
-    @JsonBackReference
+    @JsonIgnoreProperties("courses")
     private Professors professor;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -30,7 +30,6 @@ public class LearnerLoginService {
         }
 
         String token = jwtService.generateToken(learner.getLearnerUsername(), "LEARNER");
-
-        return ResponseEntity.ok().body(Map.of("token", token, "role", "LEARNER"));
+        return ResponseEntity.ok().body(Map.of("token", token, "role", "LEARNER","Username",loginrequest.getUsername()));
     }
 }

@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -20,6 +22,7 @@ public class Enrollment {
     private int enrollmentId;
     @ManyToOne
     @JoinColumn(name = "course_id", referencedColumnName = "courseId")
+    @JsonIgnoreProperties("enrollments")
     private Courses course;
 
     @ManyToOne
@@ -27,6 +30,6 @@ public class Enrollment {
     @JsonIgnoreProperties("enrollments")
     private Learner learner;
 
-    private String enrollmentDate;
+    private LocalDate enrollmentDate;
     private String status;
 }
